@@ -1,4 +1,5 @@
 import smtplib
+import os
 from functools import wraps
 from wtforms.validators import DataRequired
 from flask import Flask, render_template, request, redirect, url_for, flash, g, abort
@@ -173,7 +174,7 @@ def contact():
 
     my_email = "severeff@gmail.com"
     to_email = "egorii@list.ru"
-    password = "qgbucfjtkecefapc"
+    password = os.environ['MAIL_PASSW']
 
     with smtplib.SMTP("smtp.gmail.com") as connection:
         connection.starttls()
